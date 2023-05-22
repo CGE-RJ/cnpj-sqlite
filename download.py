@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 base_url = 'http://200.152.38.155/CNPJ/'
 
 # DiretÃ³rio para salvar os arquivos
-directory = 'dados'
+directory = 'dados-publicos-zip'
 
 # Cria a pasta dados se ela nÃ£o existir
 if not os.path.exists(directory):
