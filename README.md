@@ -1,16 +1,28 @@
+# Cronjob
+
+```
+crontab -e
+0 18 30 * * cd $(pwd) && app.py
+
+```
+
 # CNPJ-SQLITE
+
 Script em python para converter os arquivos de dados públicos de CNPJs para o formato [SQLITE](https://pt.wikipedia.org/wiki/SQLite). O código é compatível com o layout das tabelas disponibilizadas pela Receita Federal a partir de 2021.
 
 ## Dados públicos de CNPJs no site da Receita:
+
 Os arquivos csv zipados com os dados de CNPJs estão disponíveis em https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj ou https://dadosabertos.rfb.gov.br/CNPJ/ (http://200.152.38.155/CNPJ/).<br><br>
 
 ## Pré-requisitos:
+
 Python 3.8 ou posterior;<br>
 Bibliotecas pandas, dask e sqlalchemy.<br>
 55GB de disco livre, 30GB para a base em sqlite e 25GB para os arquivos do site da Receita zip ou descompactados. Os 25GB poderão ser liberados depois de rodar o script.<br>
 
 ## Utilizando o script:
-Este projeto não baixa os arquivos do site da Receita.  Obtenha uma relação dos arquivos disponíveis pelo comando no Anaconda prompt (disponível no menu do Windows):<br>
+
+Este projeto não baixa os arquivos do site da Receita. Obtenha uma relação dos arquivos disponíveis pelo comando no Anaconda prompt (disponível no menu do Windows):<br>
 <b>python dados_cnpj_lista_url.py</b><br>
 
 Baixe todos os arquivos zipados do site da Receita e salve na pasta "dados-publicos-zip".<br>
@@ -28,28 +40,35 @@ O arquivo cnpj.db poderá ser usado no meu projeto rede-cnpj (https://github.com
 O projeto https://github.com/rictom/cnpj_consulta também utiliza o arquivo cnpj.db para visualizar os dados de cnpj em formato de tabela.<br>
 
 ## Problema recorrente:
+
 Se por acaso ocorrer um erro do tipo "Engine object has no attribute execute", altere a versão da biblioteca sqlalchemy pelo comando:
 <b>pip install sqlalchemy==1.4.47</b><br>
 
 ## Arquivo sqlite com a base CNPJ:<a id="arquivo_sqlite"></a>
-O arquivo final poderá ser aberto no  [DBBrowser](https://sqlitebrowser.org/) for SQLITE.<br>
+
+O arquivo final poderá ser aberto no [DBBrowser](https://sqlitebrowser.org/) for SQLITE.<br>
 
 ![image](https://user-images.githubusercontent.com/71139693/154585662-8c38c206-cb80-492e-8413-47699c79b4fd.png)<br>
 Lista das tabelas do arquivo cnpj.db no DBBrowser.
 
 ## Conversão para mysql:
+
 O script em https://github.com/rictom/cnpj-mysql faz o carregamento dos dados para o banco de dados em MYSQL.<br>
 
 ## Histórico de versões
+
 versão 0.4 (setembro/2022)
+
 - inclusão de índice na coluna "nome fantasia" da tabela estabelecimento.
 
 versão 0.3 (maio/2022)
+
 - inclusão de índice na coluna representante_legal da tabela sócios.
 
 versão 0.2 (janeiro/2022)
+
 - removido código não utilizado
 
 versão 0.1 (julho/2021)
-- primeira versão
 
+- primeira versão
